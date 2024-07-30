@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
-
-install_dir="$(realpath)/ext/maven"
+install_dir="$(realpath .)/ext/maven"
 mvn_version="3.9.8"
 url="http://www.mirrorservice.org/sites/ftp.apache.org/maven/maven-3/${mvn_version}/binaries/apache-maven-${mvn_version}-bin.tar.gz"
 
