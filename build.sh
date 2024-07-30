@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+
 install_dir="$(realpath)/ext/maven"
 mvn_version="3.9.8"
 url="http://www.mirrorservice.org/sites/ftp.apache.org/maven/maven-3/${mvn_version}/binaries/apache-maven-${mvn_version}-bin.tar.gz"
@@ -9,7 +10,7 @@ echo "Beginning to build environment for project build"
 read -p "Press any key to continue "
 
 if [ ! -n "$(which java)" ]; then
-  echo "Java not installed. Install it and add to variable PATH"
+  echo "Java not installed. Install it and check it is added to PATH"
   exit 1
 fi
 
@@ -22,7 +23,7 @@ else
   export MAVEN_HOME=${install_dir}
   export M2_HOME=${install_dir}
   export PATH=${M2_HOME}/bin:$PATH
-  echo "Maven installed in ${install_dir}"
+  echo "Maven installed in ${install_dir}. Checking version"
   mvn --version
 fi
 
