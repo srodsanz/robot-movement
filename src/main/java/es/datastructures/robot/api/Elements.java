@@ -13,7 +13,7 @@ public final class Elements {
     public enum States {
         FREE, NARROW, GOAL;
 
-
+        // Write into string stream
         public String toString() {
             return switch (this) {
                 case FREE -> "L";

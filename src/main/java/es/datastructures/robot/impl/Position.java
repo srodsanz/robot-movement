@@ -1,5 +1,7 @@
 package es.datastructures.robot.impl;
 
+
+// Data member to store positions of the agent in the building
 public class Position {
     private final int width;
     private final int height;
@@ -9,6 +11,7 @@ public class Position {
         this.height = height;
     }
 
+    // Represent in a string stream
     public String toString() {
         return String.format("(%s, %s)", this.width+1, this.height+1);
     }
