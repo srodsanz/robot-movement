@@ -4,7 +4,13 @@ import es.datastructures.robot.api.Elements;
 
 import java.util.Arrays;
 
-// Work-around to pass by reference the algorithm data (Java defaults to pass by value)
+/*
+* Wrapper of algorithm parameters for backtracking execution
+* Java defaults to pass by value so each time the running function of the algorithm is called will
+* eventually copy the reference to an object of this class.
+* The execution will then change over the data members of this object, resulting in the update of the
+* single instance of this class.
+* */
 class AlgorithmContext {
 
     private final Boolean[][] exploredMatrix;

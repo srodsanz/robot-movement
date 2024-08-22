@@ -2,6 +2,7 @@ package es.datastructures.robot;
 
 /*
  * Main entrypoint for robot movement app
+ *
  */
 
 import org.apache.commons.cli.*;

@@ -10,9 +10,13 @@ import es.datastructures.robot.api.Results;
 
 public class Algorithm {
 
+    private Algorithm() {
+        //Avoid instantiation of the class
+    }
+
     private static final Logger logger = LoggerFactory.getLogger(Algorithm.class);
 
-    // Pass by reference
+    // Pass by reference the AlgorithmContext object
     private static void searchGoal(AlgorithmContext algorithmCtx,
                                    Position position,
                                    List<Position> solution,
@@ -27,6 +31,7 @@ public class Algorithm {
             logger.info("Searching neighbors in position " + position);
         }
 
+        // Solution achieved
         if (algorithmCtx.getPosition(positionWidth, positionHeight) == Elements.States.GOAL) {
             solution.add(position);
             algorithmCtx.accomplishSuccessfulSearch();

@@ -6,6 +6,7 @@ import es.datastructures.robot.impl.Position;
 
 public class Results {
 
+    // Variables are final since they are not updated once initialized
     private final List<Position> positions;
     private final Boolean successfulSearch;
     private static Results results;
