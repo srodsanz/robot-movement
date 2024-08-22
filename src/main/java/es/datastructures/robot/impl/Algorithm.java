@@ -2,40 +2,15 @@ package es.datastructures.robot.impl;
 
 import java.util.List;
 import java.util.ArrayList;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import es.datastructures.robot.api.Elements;
 import es.datastructures.robot.api.Results;
 
-
 public class Algorithm {
 
     private static final Logger logger = LoggerFactory.getLogger(Algorithm.class);
-
-    public static class Position {
-        private final int width;
-        private final int height;
-
-        Position(int width, int height) {
-            this.width = width;
-            this.height = height;
-        }
-
-        public String toString() {
-            return String.format("(%s, %s)", this.width+1, this.height+1);
-        }
-
-        public int getWidth() {
-            return this.width;
-        }
-
-        public int getHeight() {
-            return this.height;
-        }
-
-    }
 
     // Pass by reference
     private static void searchGoal(AlgorithmContext algorithmCtx,

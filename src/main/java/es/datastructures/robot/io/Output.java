@@ -7,7 +7,7 @@ import java.io.FileWriter;
 import java.io.File;
 
 import es.datastructures.robot.api.Results;
-import es.datastructures.robot.impl.Algorithm;
+import es.datastructures.robot.impl.Position;
 
 public class Output {
 
@@ -20,10 +20,10 @@ public class Output {
                 new OutputStreamWriter(System.out)
         );
         try {
-            System.out.println("Number of coins which are solution for the problem and values: ");
+            System.out.println("Visited positions ordered from the end to the start: ");
             bw.write(
                     String.join(System.lineSeparator(),
-                            results.getPositions().stream().map(Algorithm.Position::toString)
+                            results.getPositions().stream().map(Position::toString)
                                             .toArray(String[]::new)
                             )
             );
@@ -44,7 +44,7 @@ public class Output {
             );
             bw.write(
                     String.join(System.lineSeparator(),
-                            results.getPositions().stream().map(Algorithm.Position::toString)
+                            results.getPositions().stream().map(Position::toString)
                                     .toArray(String[]::new)
                     )
             );

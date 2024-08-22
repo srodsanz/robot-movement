@@ -2,8 +2,8 @@ package es.datastructures.robot;
 
 /*
  * Main entrypoint for robot movement app
- *
  */
+
 import org.apache.commons.cli.*;
 import java.io.File;
 import org.slf4j.Logger;
@@ -58,6 +58,7 @@ public class Launcher
             }
             String[] fileArgs = cmd.getArgs();
             if (fileArgs.length == 0) { // No positional arguments provided
+                // Data is read from stdin and is forwarded to stdout after algorithm execution
                 System.out.println("No positional arguments. Reading from stdin ...");
                 problem = Input.readFromStdIn();
                 results = Algorithm.run(problem, hasTrace);
@@ -68,6 +69,7 @@ public class Launcher
                     System.out.println(Messages.getMessage(Messages.Formatters.NO_SOLUTION));
                 }
             } else if (fileArgs.length == 1) { // One positional argument, understood as input file
+                // Data read from file and results to stdout
                 System.out.println("Received input file argument");
                 File inputFile = new File(fileArgs[0]);
                 assert inputFile.isFile() && inputFile.exists();
@@ -80,6 +82,7 @@ public class Launcher
                     System.out.println(Messages.getMessage(Messages.Formatters.NO_SOLUTION));
                 }
             } else { // Two arguments provided
+                // First argument is input file  and second argument (the last) is output file of records
                 assert fileArgs.length == 2;
                 System.out.println("Received input and output file parameters");
                 File inputFile = new File(fileArgs[0]);

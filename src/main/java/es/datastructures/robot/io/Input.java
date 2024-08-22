@@ -61,6 +61,7 @@ public class Input {
             System.out.println("Provide number of columns: ");
             nColumns = Elements.readInt(br.readLine());
             System.out.println("Provide states matrix: ");
+            // Use provided data of rows and columns to allocate static array at compile-time
             states = new Elements.States[nRows][nColumns];
             for (int i = 0; i < nRows; i++) {
                 Elements.States[] rowStates = Elements.readStates(br.readLine());

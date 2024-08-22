@@ -2,22 +2,21 @@ package es.datastructures.robot.api;
 
 import java.util.List;
 
-import es.datastructures.robot.impl.Algorithm;
+import es.datastructures.robot.impl.Position;
 
 public class Results {
 
-    private final List<Algorithm.Position> positions;
+    private final List<Position> positions;
     private final Boolean successfulSearch;
-
     private static Results results;
 
 
-    private Results(List<Algorithm.Position> positions, boolean successfulSearch) {
+    private Results(List<Position> positions, boolean successfulSearch) {
         this.positions = positions;
         this.successfulSearch = successfulSearch;
     }
 
-    public static Results get(List<Algorithm.Position> positions, boolean successfulSearch) {
+    public static Results get(List<Position> positions, boolean successfulSearch) {
 
         if (results == null) {
             results = new Results(positions, successfulSearch);
@@ -29,7 +28,7 @@ public class Results {
         return this.successfulSearch;
     }
 
-    public List<Algorithm.Position> getPositions() {
+    public List<Position> getPositions() {
         return this.positions;
     }
 
