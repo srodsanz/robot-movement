@@ -4,6 +4,7 @@ import es.datastructures.robot.api.Elements;
 
 import java.util.Arrays;
 
+// Work-around to pass by reference the algorithm data (Java defaults to pass by value)
 class AlgorithmContext {
 
     private final Boolean[][] exploredMatrix;

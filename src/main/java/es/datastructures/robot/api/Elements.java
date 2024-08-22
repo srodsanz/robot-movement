@@ -19,7 +19,6 @@ public final class Elements {
                 case FREE -> "L";
                 case NARROW -> "E";
                 case GOAL -> "T";
-                default -> "";
             };
         }
 
@@ -82,6 +81,7 @@ public final class Elements {
     }
 
     public States[][] getStatesMatrix() {return this.states;}
+
 
 }
 
