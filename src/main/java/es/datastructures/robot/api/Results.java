@@ -10,7 +10,6 @@ public class Results {
     private final Boolean successfulSearch;
     private static Results results;
 
-
     private Results(List<Position> positions, boolean successfulSearch) {
         this.positions = positions;
         this.successfulSearch = successfulSearch;

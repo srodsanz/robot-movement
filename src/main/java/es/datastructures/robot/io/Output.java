@@ -5,11 +5,17 @@ import java.io.OutputStreamWriter;
 import java.io.IOException;
 import java.io.FileWriter;
 import java.io.File;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import es.datastructures.robot.api.Results;
+import es.datastructures.robot.impl.Algorithm;
 import es.datastructures.robot.impl.Position;
 
+
 public class Output {
+
+    private static final Logger logger = LoggerFactory.getLogger(Algorithm.class);
 
     private Output() {
         // Used to avoid particular instantiation of this class
@@ -20,7 +26,7 @@ public class Output {
                 new OutputStreamWriter(System.out)
         );
         try {
-            System.out.println("Visited positions ordered from the end to the start: ");
+            logger.info("Visited positions ordered from the end to the start: ");
             bw.write(
                     String.join(System.lineSeparator(),
                             results.getPositions().stream().map(Position::toString)
@@ -30,7 +36,7 @@ public class Output {
             bw.write(System.lineSeparator());
             bw.flush();
         } catch (IOException ioe) {
-            System.err.println("Unable to write results in stdout due to: " + ioe.getMessage());
+            logger.error("Unable to write results in stdout due to: " + ioe.getMessage());
         }
     }
 
@@ -52,7 +58,7 @@ public class Output {
             bw.close();
 
         } catch (IOException e) {
-            System.err.println("Unable to write results due to: " + e.getMessage());
+            logger.error("Unable to write results due to: " + e.getMessage());
         }
     }
 

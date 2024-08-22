@@ -5,11 +5,15 @@ import java.io.File;
 import java.io.IOException;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import es.datastructures.robot.api.Elements;
-
+import es.datastructures.robot.impl.Algorithm;
 
 public class Input {
+
+    private static final Logger logger = LoggerFactory.getLogger(Algorithm.class);
 
     private Input() {
         //Used to avoid particular instantiation of this particular class
@@ -38,7 +42,7 @@ public class Input {
            br.close();
        } catch (IOException e) {
            states = new Elements.States[][]{{Elements.States.GOAL}};
-           System.err.println("Errors occurred at parsing at file: " + e.getMessage());
+           logger.error("Errors occurred at parsing at file: " + e.getMessage());
        }
        return Elements.get(
                 nRows,
@@ -56,11 +60,11 @@ public class Input {
         );
 
         try {
-            System.out.println("Provide number of rows: ");
+            logger.info("Provide number of rows: ");
             nRows = Elements.readInt(br.readLine());
-            System.out.println("Provide number of columns: ");
+            logger.info("Provide number of columns: ");
             nColumns = Elements.readInt(br.readLine());
-            System.out.println("Provide states matrix: ");
+            logger.info("Provide states matrix: ");
             // Use provided data of rows and columns to allocate static array at compile-time
             states = new Elements.States[nRows][nColumns];
             for (int i = 0; i < nRows; i++) {
@@ -69,11 +73,11 @@ public class Input {
                     states[i][j] = rowStates[j];
                 }
             }
-            System.out.println("Reading from stdin finished");
+            logger.info("Reading from stdin finished");
             br.close();
         }  catch (IOException e) {
             states = new Elements.States[][]{{Elements.States.GOAL}};
-            System.err.println("Some errors occurred at entering values: " + e.getMessage());
+            logger.error("Some errors occurred at entering values: " + e.getMessage());
         }
         return Elements.get(
                 nRows,

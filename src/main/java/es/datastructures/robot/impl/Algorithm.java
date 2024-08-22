@@ -24,7 +24,7 @@ public class Algorithm {
         algorithmCtx.invertExplored(positionWidth, positionHeight);
 
         if (hasTrace) {
-            System.out.println("Searching neighbors in position " + position);
+            logger.info("Searching neighbors in position " + position);
         }
 
         if (algorithmCtx.getPosition(positionWidth, positionHeight) == Elements.States.GOAL) {

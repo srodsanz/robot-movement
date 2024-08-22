@@ -1,7 +1,5 @@
 package es.datastructures.robot.api;
 
-import es.datastructures.robot.impl.Position;
-
 import java.util.Arrays;
 
 

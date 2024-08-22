@@ -46,8 +46,6 @@ public class Launcher
         t0 = System.currentTimeMillis();
         // Parse command-line arguments: options and positional arguments
 
-        logger.info("Begin processing of input data to run backtrack algorithm");
-
         try {
             CommandLine cmd = cmdP.parse(opts, args);
             boolean hasTrace = cmd.hasOption(trace);
@@ -56,6 +54,7 @@ public class Launcher
                 System.out.println(helpMsg);
                 System.exit(0);
             }
+            logger.info("Begin processing of input data to run backtrack algorithm");
             String[] fileArgs = cmd.getArgs();
             if (fileArgs.length == 0) { // No positional arguments provided
                 // Data is read from stdin and is forwarded to stdout after algorithm execution
@@ -63,10 +62,10 @@ public class Launcher
                 problem = Input.readFromStdIn();
                 results = Algorithm.run(problem, hasTrace);
                 if (results.hasSolution()) {
-                    System.out.println("Writing results in stdout: ");
+                    logger.info("Writing results in stdout: ");
                     Output.writeToStdOut(results);
                 } else {
-                    System.out.println(Messages.getMessage(Messages.Formatters.NO_SOLUTION));
+                    logger.warn(Messages.getMessage(Messages.Formatters.NO_SOLUTION));
                 }
             } else if (fileArgs.length == 1) { // One positional argument, understood as input file
                 // Data read from file and results to stdout
@@ -76,10 +75,10 @@ public class Launcher
                 problem = Input.readFromFile(inputFile);
                 results = Algorithm.run(problem, hasTrace);
                 if (results.hasSolution()) {
-                    System.out.println("Writing results in stdout: ");
+                    logger.info("Writing results in stdout: ");
                     Output.writeToStdOut(results);
                 } else {
-                    System.out.println(Messages.getMessage(Messages.Formatters.NO_SOLUTION));
+                    logger.warn(Messages.getMessage(Messages.Formatters.NO_SOLUTION));
                 }
             } else { // Two arguments provided
                 // First argument is input file  and second argument (the last) is output file of records
@@ -90,17 +89,17 @@ public class Launcher
                 problem = Input.readFromFile(inputFile);
                 results = Algorithm.run(problem, hasTrace);
                 if (results.hasSolution()) {
-                    System.out.println("Writing results to " + outputFile.getAbsolutePath());
+                    logger.info("Writing results to " + outputFile.getAbsolutePath());
                     Output.writeToFile(results, outputFile);
                 } else {
-                    System.out.println(Messages.getMessage(Messages.Formatters.NO_SOLUTION));
+                   logger.warn(Messages.getMessage(Messages.Formatters.NO_SOLUTION));
                 }
             }
             t1 = System.currentTimeMillis();
-            System.out.println("Finished execution with time = " + ((t1 - t0)) + " miliseconds");
+           logger.info("Finished execution with time = " + ((t1 - t0)) + " miliseconds");
 
         } catch (Exception e) {
-            System.err.println("Some error occurred at runtime: ");
+            logger.error("Some error occurred at runtime: ");
             logger.error("Registered exception: ", e);
         }
 
